@@ -1,4 +1,5 @@
 import { Application } from "https://deno.land/x/oak@v8.0.0/mod.ts";
+import type { Context } from "https://deno.land/x/oak@v8.0.0/mod.ts";
 
 import models from "./models/index.ts";
 import routes from "./routes/index.ts";
@@ -6,7 +7,7 @@ import routes from "./routes/index.ts";
 const port = 8000;
 const app = new Application();
 
-app.use(async (ctx, next) => {
+app.use(async (ctx: Context, next) => {
   ctx.state = {
     models,
     me: models.users.get("1"),
